@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<title>Responsive Webpage</title>
+<style>
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: Arial, sans-serif;
+}
+
+header {
+background: #333;
+color: white;
+text-align: center;
+padding: 30px 10px;
+}
+
+header h1 {
+margin-bottom: 5px;
+}
+
+.container {
+padding: 20px;
+column-count: 3;
+column-gap: 20px;
+}
+
+.card {
+background: #f4f4f4;
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 8px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+transition: transform 0.3s ease;
+break-inside: avoid;
+}
+
+.card:hover {
+transform: scale(1.05);
+}
+
+.card h3 {
+margin-bottom: 10px;
+}
+
+
+@media (max-width: 900px) {
+.container {
+column-count: 2;
+}
+}
+
+@media (max-width: 600px) {
+.container {
+column-count: 1;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>My Responsive Webpage</h1>
+<p>On iphone CSS2189</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>⭐ Design</h3>
+<p>This page uses multi-column layout.</p>
+</div>
+
+<div class="card">
+<h3>🎨 Style</h3>
+<p>Custom styling improves look.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Transform</h3>
+<p>Hover effect uses scaling.</p>
+</div>
+
+</div>
+
+</body>
+</html>
