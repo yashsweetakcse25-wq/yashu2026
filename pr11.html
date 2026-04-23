@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MDL-11 HTML5 APIs Demo</title>
+</head>
+<body>
+
+<h2>1. Drag and Drop</h2>
+<p>Drag the box into the target area:</p>
+
+<div id="dragBox" draggable="true"
+     style="width:100px;height:100px;background-color:lightblue;"
+     ondragstart="drag(event)">
+    Drag Me
+</div>
+
+<br>
+
+<div id="dropArea"
+     style="width:200px;height:200px;border:2px solid black;"
+     ondrop="drop(event)"
+     ondragover="allowDrop(event)">
+    Drop here
+</div>
+
+<hr>
+
+<h2>2. Geolocation</h2>
+<button onclick="getLocation()">Get Location</button>
+<p id="location"></p>
+
+<hr>
+
+<h2>3. Web Storage</h2>
+<input type="text" id="name" placeholder="Enter your name">
+<button onclick="saveData()">Save</button>
+<button onclick="loadData()">Load</button>
+<p id="result"></p>
+
+<script>
+// Drag & Drop
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+
+// Geolocation
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        document.getElementById("location").innerHTML = "Geolocation not supported";
+    }
+}
+
+function showPosition(position) {
+    document.getElementById("location").innerHTML =
+        "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
+
+// Web Storage
+function saveData() {
+    var name = document.getElementById("name").value;
+    localStorage.setItem("username", name);
+    alert("Data saved!");
+}
+
+function loadData() {
+    var name = localStorage.getItem("username");
+    document.getElementById("result").innerHTML = "Stored Name: " + name;
+}
+</script>
+
+</body>
+</html>
